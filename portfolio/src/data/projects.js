@@ -16,6 +16,14 @@ export const projects = [
       videoUrl: null
     },
     {
+      title: "Jokes PHP App",
+      description: "A web-based application implementation of a fantasy fighting RPG game I made in college",
+      liveUrl: "  https://roguetype.ashershores.com/",
+      github: "https://github.com/asherShores5/RogueType",
+      tech: ["Next.js", "Game Dev", "Retro"],
+      videoUrl: null
+    },
+    {
       title: "NutriSageAI",
       description: "AI-powered fitness and nutrition service that tracks nutrition, suggests meals",
       liveUrl: "https://ashershores5.github.io/NutriSageAI/",
