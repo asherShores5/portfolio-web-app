@@ -16,7 +16,7 @@ export const projects = [
       videoUrl: null
     },
     {
-      title: "Jokes PHP App",
+      title: "RogueType",
       description: "A web-based application implementation of a fantasy fighting RPG game I made in college",
       liveUrl: "  https://roguetype.ashershores.com/",
       github: "https://github.com/asherShores5/RogueType",
