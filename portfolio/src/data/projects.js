@@ -16,11 +16,27 @@ export const projects = [
       videoUrl: null
     },
     {
-      title: "RogueType",
-      description: "A web-based application implementation of a fantasy fighting RPG game I made in college",
-      liveUrl: "  https://roguetype.ashershores.com/",
-      github: "https://github.com/asherShores5/RogueType",
-      tech: ["Next.js", "Game Dev", "Retro"],
+      title: "OCR Wombat",
+      description: " Simple OCR tool using the free OCR Web API to transform images to text in seconds!",
+      liveUrl: "https://ocr-wombat.ashershores.com/",
+      github: "https://github.com/asherShores5/ocr-wombat",
+      tech: ["OCR", "Image-to-Text", "Web API"],
+      videoUrl: null
+    },
+    // {
+    //   title: "RogueType",
+    //   description: "A web-based application implementation of a fantasy fighting RPG game I made in college",
+    //   liveUrl: "  https://roguetype.ashershores.com/",
+    //   github: "https://github.com/asherShores5/RogueType",
+    //   tech: ["Next.js", "Game Dev", "Retro"],
+    //   videoUrl: null
+    // },
+    {
+      title: "AsherShores.com",
+      description: "The website you're currently on! Built with React and TailwindCSS, optimized for AWS deployment. ",
+      liveUrl: "https://ashershores.com/",
+      github: "https://github.com/asherShores5/portfolio-web-app",
+      tech: ["React", "TailwindCSS", "AWS"],
       videoUrl: null
     },
     {

@@ -13,6 +13,7 @@ export const Navigation = () => {
       { href: "#intro", label: "About\t" },
       { href: "#projects", label: "Projects\t" },
       { href: "#skills", label: "Skills\t" },
+      { href: "#certifications", label: "Certifications\t" },
       { href: "#connect", label: "Connect\t" },
       { href: "#hire", label: "Hire Me\t" }
     ];

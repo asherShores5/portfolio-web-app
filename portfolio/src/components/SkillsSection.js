@@ -7,6 +7,8 @@ export const SkillsSection = () => {
  return (
    <section id="skills" className="pt-4 min-h-screen">
      <div className="max-w-6xl mx-auto p-6">
+     <div className="bg-[#1a1f2c]/50 backdrop-blur-sm rounded-xl p-8 shadow-lg shadow-black/5">
+
        <h2 className="text-3xl font-bold mb-8">Skills & Technologies</h2>
        
        <div className="grid md:grid-cols-3 gap-8">
@@ -23,6 +25,7 @@ export const SkillsSection = () => {
            </div>
          ))}
        </div>
+     </div>
      </div>
    </section>
  );

@@ -1,11 +1,11 @@
 // components/ConnectSection.js
 import React from 'react';
-import { Github, Linkedin, Twitter, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 import { socials } from '../data/socials';
 
 export const ConnectSection = () => {
   return (
-    <section id="connect" className="pt-4 min-h-screen">
+    <section id="connect" className="pt-40 min-h-screen">
       <div className="max-w-6xl mx-auto p-6">
       <div className="bg-[#1a1f2c]/50 backdrop-blur-sm rounded-xl p-8 shadow-lg shadow-black/5">
         <h2 className="text-3xl font-bold mb-8">Let's Connect</h2>
@@ -30,11 +30,11 @@ export const ConnectSection = () => {
                 <span>Connect on LinkedIn</span>
               </a>
               
-              <a href={socials.twitter}
+              {/* <a href={socials.twitter}
                  className="flex items-center space-x-4 p-4 bg-[#1a1f2c] rounded-lg hover:bg-[#2a2f3c] transition">
                 <Twitter size={24} />
                 <span>Follow me on Twitter</span>
-              </a>
+              </a> */}
               
               <a href={`mailto:${socials.email}`}
                  className="flex items-center space-x-4 p-4 bg-[#1a1f2c] rounded-lg hover:bg-[#2a2f3c] transition">
