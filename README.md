@@ -2,7 +2,7 @@
 
 A responsive portfolio website built with React and TailwindCSS, optimized for AWS deployment.
 
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/09b5835d-5af3-48f8-af9c-9e02ba659a7a)
 
 ## Features
 
