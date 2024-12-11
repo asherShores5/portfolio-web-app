@@ -2,6 +2,8 @@
 
 A responsive portfolio website built with React and TailwindCSS, optimized for AWS deployment.
 
+![Uploading image.png…]()
+
 ## Features
 
 - Responsive design with dark mode
