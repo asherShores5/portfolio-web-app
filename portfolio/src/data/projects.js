@@ -17,10 +17,18 @@ export const projects = [
     },
     {
       title: "OCR Wombat",
-      description: " Simple OCR tool using the free OCR Web API to transform images to text in seconds!",
+      description: "Simple OCR tool using the free OCR Web API to transform images to text in seconds!",
       liveUrl: "https://ocr-wombat.ashershores.com/",
       github: "https://github.com/asherShores5/ocr-wombat",
       tech: ["OCR", "Image-to-Text", "Web API"],
+      videoUrl: null
+    },
+    {
+      title: "PrettyPress",
+      description: "A fast, browser-based code and document formatter.",
+      liveUrl: "https://prettypress.ashershores.com/",
+      github: "https://github.com/asherShores5/pretty-press",
+      tech: ["Express.js", "Formatting Tool", "API"],
       videoUrl: null
     },
     // {
