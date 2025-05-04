@@ -8,8 +8,8 @@ export const IntroSection = () => {
         <div>
           <h2 className="text-4xl font-bold mb-4">Hi, I'm Asher Shores</h2>
           <p className="text-gray-400 text-lg mb-6">
-            DevOps/Cloud Engineer | Active TS/SCI | 3x AWS Certified |
-            Ambitious fullstack engineer and tech enthusiast currently working in defense.
+            Cloud DevOps Engineer with experience in AWS architecture, CI/CD pipeline optimization, and full-stack development.
+            Contributing to cloud-native solutions and deployment process automation within collaborative team environments
           </p>
           <div className="flex space-x-4">
             <a href="https://github.com/asherShores5" 
