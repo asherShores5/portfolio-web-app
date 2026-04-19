@@ -1,8 +1,16 @@
 export const projects = [
     {
+      title: "Sprouts",
+      description: "Two-player browser implementation of the classic Conway pencil-and-paper topology game. Draw curves between spots, place new spots, and make the last valid move to win.",
+      liveUrl: "https://sprouts.ashershores.com/",
+      github: "https://github.com/asherShores5/sprouts",
+      tech: ["HTML5 Canvas", "Vanilla JS", "AWS Amplify"],
+      videoUrl: null
+    },
+    {
       title: "ExamPrepLab.com",
       description: "Interactive study platform for exams & certifications featuring quizzes and flashcards",
-      liveUrl: "https://www.exampreplab.com/index.html",
+      liveUrl: "https://www.exam-prep-lab.ashershores.com/",
       github: "https://github.com/asherShores5/Exam-Prep-Lab",
       tech: ["React", "AWS Amplify", "TailwindCSS"],
       videoUrl: null
