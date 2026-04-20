@@ -48,6 +48,14 @@ export const projects = [
     //   videoUrl: null
     // },
     {
+      title: "Chess Move Predictor",
+      description: "Browser-based chess position editor and move analyzer powered by Stockfish. Set up any position, get engine evaluations, best moves, and mate detection — all running locally in your browser.",
+      liveUrl: "https://chess.ashershores.com/",
+      github: "https://github.com/asherShores5/chess-move-predictor",
+      tech: ["Vanilla JS", "Stockfish", "AWS Amplify"],
+      videoUrl: null
+    },
+    {
       title: "AsherShores.com",
       description: "The website you're currently on! Built with React and TailwindCSS, optimized for AWS deployment. ",
       liveUrl: "https://ashershores.com/",
