@@ -1,57 +1,87 @@
-# Modern Portfolio Website with React & AWS
+# Asher Shores — Portfolio Website
 
-A responsive portfolio website built with React and TailwindCSS, optimized for AWS deployment.
+A responsive personal portfolio site built with React and TailwindCSS, hosted on
+AWS Amplify. Live at **[ashershores.com](https://ashershores.com)**.
 
-![image](https://github.com/user-attachments/assets/09b5835d-5af3-48f8-af9c-9e02ba659a7a)
+![Portfolio screenshot](https://github.com/user-attachments/assets/09b5835d-5af3-48f8-af9c-9e02ba659a7a)
 
 ## Features
 
-- Responsive design with dark mode
-- Interactive sections: About, Projects, Skills, Connect, Hire Me
-- Integrated contact form
-- Dynamic skill cards and project showcase
-- Social media integration
-- Location mapping
-- Mobile-friendly navigation
+- Single-page, scroll-based layout: About → Skills → Certifications → Projects → Connect → Contact
+- Responsive design with a mobile hamburger menu
+- Dark theme
+- Data-driven content (projects, skills, certifications, socials)
+- Certification badges linking to Credly
+- Serverless contact form (AWS Lambda Function URL)
+- Embedded location map
 
 ## Tech Stack
 
-- React.js
-- TailwindCSS
-- Lucide Icons
-- AWS Services
+- **React 18** via Create React App (`react-scripts`)
+- **TailwindCSS 3**
+- **lucide-react** (icons)
+- **AWS Amplify** (hosting + CI/CD), **Lambda** (contact form), **Route 53** (DNS)
 
-## AWS Infrastructure
+## Repository layout
 
-This project leverages several AWS services:
+> **Note:** the React app lives in the nested [`portfolio/`](portfolio/)
+> directory, not the repo root. Run all `npm` commands from there.
 
-- **AWS Amplify**: Main deployment and hosting
-- **Route 53**: Domain management
-- **CloudFront**: Content delivery
-- **S3**: Static asset storage
-- **Lambda**: Contact form processing
-- **API Gateway**: API endpoints
-
-## Local Development
-
-```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
+```
+portfolio-web-app/
+├── README.md            # this file
+├── CLAUDE.md            # guidance for AI assistants
+├── spec.md             # product/technical spec + backlog
+└── portfolio/           # the React app
+    ├── public/          # static assets, index.html, manifest
+    └── src/
+        ├── components/   # one component per section
+        └── data/         # projects, skills, certs, socials
 ```
 
-## AWS Amplify Deployment
+## Local development
 
-1. Push code to GitHub repository
-2. Log into AWS Console and open Amplify
-3. Choose "Host web app"
-4. Connect GitHub repository
-5. Configure build settings:
+```bash
+cd portfolio
+npm install      # install dependencies
+npm start        # dev server at http://localhost:3000
+npm run build    # production build -> portfolio/build/
+npm test         # test runner (Jest, watch mode)
+```
+
+There is no `npm run dev` or `npm run lint` — this is a Create React App project.
+Linting runs automatically during `start`/`build` via the `react-app` ESLint config.
+
+## Editing content
+
+Content is data-driven. To update what's shown on the site, edit the files in
+[portfolio/src/data/](portfolio/src/data/):
+
+| To change… | Edit |
+|---|---|
+| Projects | [`data/projects.js`](portfolio/src/data/projects.js) |
+| Skills | [`data/skills.js`](portfolio/src/data/skills.js) |
+| Certifications | [`data/certs.js`](portfolio/src/data/certs.js) |
+| Social links | [`data/socials.js`](portfolio/src/data/socials.js) |
+| Bio / headline | [`components/IntroSection.js`](portfolio/src/components/IntroSection.js) |
+| Location + map | [`components/HireMeSection.js`](portfolio/src/components/HireMeSection.js) |
+
+## Contact form
+
+The contact form POSTs `{ name, email, message }` to an AWS Lambda Function URL.
+The endpoint is currently hard-coded in
+[`HireMeSection.js`](portfolio/src/components/HireMeSection.js). To externalize it,
+use a `REACT_APP_`-prefixed env var (CRA only exposes those to the client):
+
+```
+# portfolio/.env
+REACT_APP_CONTACT_ENDPOINT=https://<your-lambda-url>
+```
+
+## Deployment (AWS Amplify)
+
+The site auto-deploys from the `main` branch. Because the app lives in the
+`portfolio/` subdirectory, the Amplify build spec must build from there:
 
 ```yaml
 version: 1
@@ -59,63 +89,27 @@ frontend:
   phases:
     preBuild:
       commands:
-        - cd quiz-app
+        - cd portfolio
         - npm ci
     build:
       commands:
         - npm run build
   artifacts:
-    baseDirectory: quiz-app/dist
+    baseDirectory: portfolio/build
     files:
       - "**/*"
   cache:
     paths:
-      - quiz-app/node_modules/**/*
+      - portfolio/node_modules/**/*
 ```
 
-6. Deploy and verify
+### Custom domain
 
-## Environment Variables
+The domain is managed in Route 53 and connected through the Amplify console
+(custom domain + managed SSL certificate). Side projects are served from
+subdomains of `ashershores.com`.
 
-Create `.env` file:
-```
-VITE_GOOGLE_MAPS_API_KEY=your_api_key
-VITE_EMAIL_SERVICE_ENDPOINT=your_aws_endpoint
-```
+## Project status
 
-## Project Structure
-
-```
-src/
-├── components/       # React components
-├── data/            # Static data files
-├── styles/          # CSS and Tailwind
-└── App.jsx          # Main component
-```
-
-## Available Scripts
-
-- `npm run dev`: Start development server
-- `npm run build`: Build for production
-- `npm run lint`: Lint code
-- `npm run test`: Run tests
-
-## AWS Services Configuration
-
-### Contact Form Setup
-
-1. Create API Gateway endpoint
-2. Configure Lambda function for email processing
-3. Set up SES for email handling
-4. Update environment variables
-
-### Custom Domain
-
-1. Purchase domain through Route 53
-2. Configure in Amplify
-3. Add SSL certificate
-4. Update DNS records
-
-## Project Status
-
-This project is privately maintained and not open for public contributions. It serves as a demonstration of the dev's skills in web development and cloud architecture.****
+Privately maintained personal project; not open for external contributions. See
+[spec.md](spec.md) for the current backlog of bugs, improvements, and planned work.

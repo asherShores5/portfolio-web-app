@@ -10,7 +10,7 @@ export const projects = [
     {
       title: "ExamPrepLab.com",
       description: "Interactive study platform for exams & certifications featuring quizzes and flashcards",
-      liveUrl: "exampreplab.ashershores.com/",
+      liveUrl: "https://exampreplab.ashershores.com/",
       github: "https://github.com/asherShores5/Exam-Prep-Lab",
       tech: ["React", "AWS Amplify", "TailwindCSS"],
       videoUrl: null
