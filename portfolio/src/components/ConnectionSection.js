@@ -29,13 +29,7 @@ export const ConnectSection = () => {
                 <Linkedin size={24} />
                 <span>Connect on LinkedIn</span>
               </a>
-              
-              {/* <a href={socials.twitter}
-                 className="flex items-center space-x-4 p-4 bg-[#1a1f2c] rounded-lg hover:bg-[#2a2f3c] transition">
-                <Twitter size={24} />
-                <span>Follow me on Twitter</span>
-              </a> */}
-              
+
               <a href={`mailto:${socials.email}`}
                  className="flex items-center space-x-4 p-4 bg-[#1a1f2c] rounded-lg hover:bg-[#2a2f3c] transition">
                 <Mail size={24} />
@@ -47,8 +41,8 @@ export const ConnectSection = () => {
           <div className="bg-[#1a1f2c] p-6 rounded-lg">
             <h3 className="text-xl font-semibold mb-4">Professional Summary</h3>
             <p className="text-gray-400">
-              Currently working as a DevOps and Cloud Engineer in defense with expertise in cloud and modern web technologies.
-              Open to freelance projects and full-time opportunities.
+              Cloud Support Engineer at AWS (Amazon Dedicated Cloud) with expertise in cloud architecture and modern web technologies.
+              Always happy to connect about cloud, DevOps, and web projects.
             </p>
           </div>
         </div>

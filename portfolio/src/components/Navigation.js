@@ -4,18 +4,24 @@ import { Menu, X } from 'lucide-react';
 export const Navigation = () => {
     const [isOpen, setIsOpen] = useState(false);
 
+    const NAV_HEIGHT = 64; // h-16 fixed header
+
     const scrollToSection = (e, id) => {
         e.preventDefault();
-        document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+        const target = document.querySelector(id);
+        if (!target) return;
+        const top = target.getBoundingClientRect().top + window.scrollY - NAV_HEIGHT;
+        window.scrollTo({ top, behavior: 'smooth' });
+        setIsOpen(false);
       };
-    
+
     const links = [
-      { href: "#intro", label: "About\t" },
-      { href: "#projects", label: "Projects\t" },
-      { href: "#skills", label: "Skills\t" },
-      { href: "#certifications", label: "Certifications\t" },
-      { href: "#connect", label: "Connect\t" },
-      { href: "#hire", label: "Hire Me\t" }
+      { href: "#intro", label: "About" },
+      { href: "#projects", label: "Projects" },
+      { href: "#skills", label: "Skills" },
+      { href: "#certifications", label: "Certifications" },
+      { href: "#connect", label: "Connect" },
+      { href: "#hire", label: "Contact" }
     ];
   
     return (
@@ -27,7 +33,8 @@ export const Navigation = () => {
             {/* Desktop Navigation */}
             <div className="hidden md:flex space-x-8">
               {links.map(link => (
-                <a key={link.href} href={link.href} 
+                <a key={link.href} href={link.href}
+                   onClick={(e) => scrollToSection(e, link.href)}
                    className="hover:text-blue-400 transition-colors">
                   {link.label}
                 </a>
@@ -42,12 +49,12 @@ export const Navigation = () => {
   
           {/* Mobile Navigation */}
           {isOpen && (
-            <div className="md:hidden">
+            <div className="md:hidden flex flex-col space-y-2 pb-4">
               {links.map(link => (
-                <a key={link.href} 
-                href={link.href} 
+                <a key={link.href}
+                href={link.href}
                 onClick={(e) => scrollToSection(e, link.href)}
-                className="hover:text-blue-400 transition-colors">
+                className="py-1 hover:text-blue-400 transition-colors">
                {link.label}
              </a>
               ))}
