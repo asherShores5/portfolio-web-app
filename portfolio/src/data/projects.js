@@ -15,8 +15,8 @@ export const projects = [
   {
     title: "HoneyDo",
     logo: "/images/projects/honeydo.png",
-    description: "Household task app for two, with shared and private chores, reminders and push notifications. Visitors see the sign-in page.",
-    liveUrl: "https://honeydo.ashershores.com/",
+    description: "Household task app for two, with shared and private chores, reminders and push notifications. The live link opens a demo household that runs in your browser.",
+    liveUrl: "https://honeydo.ashershores.com/demo",
     github: `${GITHUB}/honeydo`,
     tech: ["React", "TypeScript", "AppSync", "DynamoDB", "Push Notifications"]
   },
