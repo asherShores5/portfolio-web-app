@@ -26,6 +26,7 @@ export const ProjectsSection = () => {
                {project.liveUrl && (
                  <a 
                    href={project.liveUrl}
+                   aria-label={`${project.title} live demo (opens in a new tab)`}
                    className="flex items-center gap-2 text-blue-400 hover:text-blue-300"
                    target="_blank"
                    rel="noopener noreferrer"
@@ -37,6 +38,7 @@ export const ProjectsSection = () => {
                {project.github && (
                  <a 
                    href={project.github}
+                   aria-label={`${project.title} source code on GitHub (opens in a new tab)`}
                    className="flex items-center gap-2 text-gray-400 hover:text-gray-300"
                    target="_blank"
                    rel="noopener noreferrer"
