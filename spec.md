@@ -2,7 +2,7 @@
 
 **Owner:** Asher Shores
 **Live site:** [ashershores.com](https://ashershores.com)
-**Last reviewed:** 2026-06-16
+**Last reviewed:** 2026-11-03
 
 ---
 
@@ -145,3 +145,55 @@ Easy wins:
 - Authentication or user accounts
 - Server-side rendering
 - Public open-source contributions (the repo is a personal showcase)
+
+---
+
+## 8. 2026-11 refresh (decided 2026-11-03)
+
+Goal: bring content up to date, fix bugs, harden security. Bio wording unchanged.
+
+### Content
+- **Projects**, newest first: NutriSage (nutrisage.ashershores.com, repo NutriSage, Bedrock),
+  HoneyDo, Games Catalog, App Connector (all with Live links; HoneyDo/Games Catalog
+  show a sign-in page to visitors), Exam Prep Lab, Sprouts, Artsy, PrettyPress, OCR Wombat,
+  AsherShores.com, Jokes PHP App (GitHub link only; its live API now needs a key).
+  Drop the unused `videoUrl` field.
+- **Certifications**, newest first: add SA Professional, ML Engineer Associate,
+  AI Business Strategist; refresh Credly links that redirect.
+- **Skills**: add TypeScript, AWS CDK, Lambda, DynamoDB, AppSync/GraphQL, Bedrock,
+  GitHub Actions, Playwright, Vite; drop Angular, WebAssembly, Atlassian Suite,
+  Microsoft Office; no duplicates across categories.
+- **Branding**: "AS" monogram favicon/app icons, title "Asher Shores | Cloud & Software
+  Engineer", Open Graph tags.
+
+### Fixes
+- Accessibility: aria-labels on icon-only links and the menu button (`aria-expanded`),
+  form labels tied to inputs, `aria-live` status, descriptive profile alt text.
+- Nav order matches page order; sections use a scroll margin so headings clear the fixed nav.
+- Contact form: honeypot field; friendly message on any non-OK or non-JSON response.
+
+### Toolchain
+- Create React App -> Vite + Vitest (JavaScript kept, Tailwind 3 kept). Amplify build
+  spec updated. Contact endpoint comes from `VITE_CONTACT_ENDPOINT` (build-time) with the
+  live URL as the committed default in `src/config.js`.
+
+### Contact backend (`infra/`, CDK TypeScript, us-west-1, stack `PortfolioContact`)
+- New Lambda (Node 22) + Function URL, auth NONE, CORS POST only from
+  https://www.ashershores.com (and https://ashershores.com).
+- Validation: name 1-100, email <= 254 + format, message 1-5000, honeypot empty; 400 on
+  bad/malformed input (parse inside try). 10s timeout, 30-day log retention,
+  reserved concurrency 2.
+- Rate limits via DynamoDB counters with TTL: 3 per IP per day, 50 total per day; 429 when over.
+- SES domain identity ashershores.com with DKIM records in Route 53 + DMARC record.
+  Sender noreply@ashershores.com, Reply-To = visitor email (validated; no CR/LF),
+  delivered to asher.shores5@gmail.com. IAM limited to that identity.
+- Cutover: site points at the new URL; old hand-made `send-portfolio-contact` is backed up,
+  then deleted only after Asher confirms a test message arrived.
+
+### Security / CI
+- `customHttp.yml`: CSP (self, contact URL, Google Maps frames), HSTS, nosniff,
+  Referrer-Policy, Permissions-Policy, COOP, frame-ancestors none.
+- GitHub: main protected (PR, required checks, no force-push/delete); Actions pinned to SHAs;
+  CI runs web + infra tests on PRs; backend deploys from main via OIDC role
+  `portfolio-github-deploy` trusting only the `production` environment (Asher approves).
+  Dependabot monthly, grouped. Amplify still builds the site from main.
