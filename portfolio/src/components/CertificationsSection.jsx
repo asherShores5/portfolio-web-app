@@ -4,7 +4,7 @@ import { certs } from '../data/certs';
 
 export const CertificationsSection = () => {
   return (
-    <section id="certifications" className="pt-4 min-h-screen">
+    <section id="certifications" className="pt-4 min-h-screen scroll-mt-16">
       <div className="max-w-6xl mx-auto p-6">
         <div className="bg-[#1a1f2c]/50 backdrop-blur-sm rounded-xl p-8 shadow-lg shadow-black/5">
           <h2 className="text-3xl font-bold mb-8">Certifications</h2>
@@ -16,7 +16,7 @@ export const CertificationsSection = () => {
                   <div className="flex-shrink-0">
                     <img
                       src={cert.badgeUrl}
-                      alt={cert.title}
+                      alt={`${cert.title} badge`}
                       width={96}
                       height={96}
                       className="w-24 h-24 object-contain"
@@ -42,11 +42,12 @@ export const CertificationsSection = () => {
                     {cert.credlyUrl && (
                       <a
                         href={cert.credlyUrl}
+                        aria-label={`View ${cert.title} badge on Credly (opens in a new tab)`}
                         className="flex items-center gap-2 text-blue-400 hover:text-blue-300"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <ExternalLink size={16} />
+                        <ExternalLink size={16} aria-hidden="true" />
                         View Badge
                       </a>
                     )}
@@ -60,5 +61,3 @@ export const CertificationsSection = () => {
     </section>
   );
 };
-
-export default CertificationsSection;

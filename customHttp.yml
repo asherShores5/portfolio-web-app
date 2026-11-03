@@ -1,0 +1,20 @@
+# AWS Amplify custom headers for www.ashershores.com.
+# The CSP must allow the contact form's Lambda Function URL (connect-src) and
+# the Google Maps embed (frame-src). Tested by portfolio/src/customHttp.test.js.
+customHeaders:
+  - pattern: '**'
+    headers:
+      - key: Strict-Transport-Security
+        value: max-age=31536000
+      - key: X-Content-Type-Options
+        value: nosniff
+      - key: X-Frame-Options
+        value: DENY
+      - key: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - key: Permissions-Policy
+        value: camera=(), microphone=(), geolocation=()
+      - key: Cross-Origin-Opener-Policy
+        value: same-origin
+      - key: Content-Security-Policy
+        value: "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://*.lambda-url.us-west-1.on.aws; frame-src https://maps.google.com https://www.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'"

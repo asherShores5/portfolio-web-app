@@ -1,11 +1,10 @@
-// components/ProjectsSection.js
 import React from 'react';
 import { Github, ExternalLink } from 'lucide-react';
 import { projects } from '../data/projects';
 
 export const ProjectsSection = () => {
  return (
-   <section id="projects" className="pt-4 min-h-screen">
+   <section id="projects" className="pt-4 min-h-screen scroll-mt-16">
      <div className="max-w-6xl mx-auto p-6">
      <div className="bg-[#1a1f2c]/50 backdrop-blur-sm rounded-xl p-8 shadow-lg shadow-black/5">
        <h2 className="text-3xl font-bold mb-8">Projects</h2>
@@ -27,22 +26,24 @@ export const ProjectsSection = () => {
                {project.liveUrl && (
                  <a 
                    href={project.liveUrl}
+                   aria-label={`${project.title} live demo (opens in a new tab)`}
                    className="flex items-center gap-2 text-blue-400 hover:text-blue-300"
                    target="_blank"
                    rel="noopener noreferrer"
                  >
-                   <ExternalLink size={16} />
+                   <ExternalLink size={16} aria-hidden="true" />
                    Live Demo
                  </a>
                )}
                {project.github && (
                  <a 
                    href={project.github}
+                   aria-label={`${project.title} source code on GitHub (opens in a new tab)`}
                    className="flex items-center gap-2 text-gray-400 hover:text-gray-300"
                    target="_blank"
                    rel="noopener noreferrer"
                  >
-                   <Github size={16} />
+                   <Github size={16} aria-hidden="true" />
                    Code
                  </a>
                )}
