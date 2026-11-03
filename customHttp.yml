@@ -17,4 +17,4 @@ customHeaders:
       - key: Cross-Origin-Opener-Policy
         value: same-origin
       - key: Content-Security-Policy
-        value: "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://veiehrbviocqzirwjbd6h5n4wa0pogdo.lambda-url.us-west-1.on.aws; frame-src https://maps.google.com https://www.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'"
+        value: "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://5i5zivzhafauc3a4mzmiyiz36i0xvmaf.lambda-url.us-west-1.on.aws; frame-src https://maps.google.com https://www.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'"

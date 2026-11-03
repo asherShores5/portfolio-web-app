@@ -2,4 +2,4 @@
 // the committed default is the live Lambda Function URL.
 export const CONTACT_ENDPOINT =
   import.meta.env.VITE_CONTACT_ENDPOINT ||
-  'https://veiehrbviocqzirwjbd6h5n4wa0pogdo.lambda-url.us-west-1.on.aws/';
+  'https://5i5zivzhafauc3a4mzmiyiz36i0xvmaf.lambda-url.us-west-1.on.aws/';
