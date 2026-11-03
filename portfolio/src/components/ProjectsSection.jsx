@@ -11,7 +11,19 @@ export const ProjectsSection = () => {
        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
          {projects.map((project, index) => (
            <div key={index} className="bg-[#1a1f2c] rounded-lg p-6 border border-gray-800 hover:border-gray-700 transition">
-             <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+             <div className="flex items-center gap-4 mb-3">
+               {project.logo && (
+                 <img
+                   src={project.logo}
+                   alt=""
+                   width="48"
+                   height="48"
+                   loading="lazy"
+                   className="w-12 h-12 rounded-xl flex-shrink-0"
+                 />
+               )}
+               <h3 className="text-xl font-semibold">{project.title}</h3>
+             </div>
              <p className="text-gray-400 mb-4">{project.description}</p>
              
              <div className="flex flex-wrap gap-2 mb-4">

@@ -114,28 +114,16 @@ Easy wins:
 
 ### Remaining
 
-- 🟢 **Missing site favicon/branding.** Still using CRA default `favicon.ico` /
-  `logo192.png` / `logo512.png`. Replace with personal branding. (Requires
-  designed image assets — left for a content pass.)
+Done in the 2026-11 refresh (section 8): branding/favicon, contact endpoint in
+config/env, contact validation + spam protection, `videoUrl` removed,
+accessibility pass, CRA -> Vite. Project logos on every card (2026-11-03).
 
 ### Enhancements (planned for later)
 
-- 🔵 **Move the Lambda endpoint to an env var.** The contact URL is hard-coded in
-  [HireMeSection.js](portfolio/src/components/HireMeSection.js). Move to
-  `process.env.REACT_APP_CONTACT_ENDPOINT` (CRA only exposes `REACT_APP_*`).
-- 🔵 **Contact form validation & spam protection.** Add client-side validation
-  beyond `required`, and consider a honeypot or captcha on the Lambda.
-- 🔵 **Surface `videoUrl`.** Every project carries a `videoUrl: null` field that
-  nothing renders. Either wire up demo videos or drop the field.
-- 🔵 **Project image/thumbnails.** Cards are text-only; thumbnails would improve
-  visual appeal.
-- 🔵 **Light/dark toggle.** README claims "dark mode" but the site is
-  dark-only. Either add a real toggle or correct the claim.
-- 🔵 **Accessibility pass.** Add `aria-label`s to icon-only links, verify focus
-  states, and check color contrast on `text-gray-400` over dark backgrounds.
-- 🔵 **Dependency / framework refresh.** CRA is effectively unmaintained.
-  A future migration to Vite would modernize the toolchain (and finally make the
-  old README's `npm run dev` accurate).
+- 🔵 **Light/dark toggle.** The site is dark-only; add a real toggle or keep
+  the dark theme as a deliberate choice.
+- 🔵 **Project screenshots.** Cards now show each app's logo; a screenshot or
+  short demo per project would go further.
 
 ---
 

@@ -48,4 +48,11 @@ describe('content data', () => {
       expect(c.credlyUrl).toMatch(/^https:\/\/www\.credly\.com\/badges\//);
     }
   });
+
+  it('every project has a logo image that exists', () => {
+    for (const p of projects) {
+      expect(p.logo, p.title).toMatch(/^\/images\/projects\/[a-z]+\.png$/);
+      expect(existsSync(`${publicDir}${p.logo}`), p.title).toBe(true);
+    }
+  });
 });
