@@ -5,7 +5,7 @@ import { socials } from '../data/socials';
 export const IntroSection = () => {
     return(
     <section id="intro" className="pt-4 min-h-screen flex items-center scroll-mt-16">
-      <div className="max-w-6xl mx-auto px-20 py-12 grid md:grid-cols-2 gap-8 items-center">
+      <div className="max-w-6xl mx-auto px-6 md:px-20 py-12 grid md:grid-cols-2 gap-8 items-center">
         <div>
           <h2 className="text-4xl font-bold mb-4">Hi, I'm Asher Shores</h2>
           <p className="text-gray-400 text-lg mb-6">
