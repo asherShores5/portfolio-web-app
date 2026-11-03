@@ -1,0 +1,65 @@
+name: Deploy backend
+
+# Deploys the PortfolioContact stack (contact form Lambda) when infra/ changes on main.
+# The deploy job waits for Asher's approval in the `production` GitHub Environment; the AWS role
+# (PortfolioCi stack) trusts only that environment. PortfolioCi itself is deployed by hand
+# (docs/first-deploy.md), so CI can't widen its own trust.
+#   secret AWS_ACCOUNT_ID  masked in the public logs; the deploy role ARN is built from it
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "infra/**"
+      - ".github/workflows/deploy-backend.yml"
+
+# Never cancel a deploy halfway; queue the next one instead.
+concurrency:
+  group: deploy-backend
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  infra-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: infra
+    env:
+      AWS_REGION: us-west-1
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with: { persist-credentials: false }
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with: { node-version: 22, cache: npm, cache-dependency-path: infra/package-lock.json }
+      - run: npm ci
+      - run: npm test
+      - run: npm run typecheck
+
+  deploy:
+    needs: infra-test
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      id-token: write # OIDC -> AWS
+      contents: read
+    defaults:
+      run:
+        working-directory: infra
+    env:
+      AWS_REGION: us-west-1
+      AWS_DEFAULT_REGION: us-west-1
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with: { persist-credentials: false }
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with: { node-version: 22, cache: npm, cache-dependency-path: infra/package-lock.json }
+      - run: npm ci
+      - uses: aws-actions/configure-aws-credentials@7474bc4690e29a8392af63c5b98e7449536d5c3a # v4.3.1
+        with:
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/portfolio-github-deploy
+          aws-region: us-west-1
+          mask-aws-account-id: true
+      - run: npx cdk deploy PortfolioContact --require-approval never
