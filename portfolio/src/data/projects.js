@@ -18,7 +18,7 @@ export const projects = [
     {
       title: "The Artsy Project",
       description: "Custom programming language and educational platform to learn coding!",
-      liveUrl: "http://shores-artsy-bucket.s3-website-us-west-1.amazonaws.com/",
+      liveUrl: "https://artsy.ashershores.com/",
       github: "https://github.com/asherShores5/Artsy-Site",
       tech: ["Compilers", "JavaScript", "Education"],
       videoUrl: null
