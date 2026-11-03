@@ -109,12 +109,30 @@ error with the email address. If the endpoint host changes, update the CSP
 
 Amplify builds from GitHub `main` using [amplify.yml](amplify.yml): `cd portfolio`,
 `npm ci`, `npm run build`, artifacts from `portfolio/build`. Response headers
-come from [customHttp.yml](customHttp.yml).
+come from [customHttp.yml](customHttp.yml). If the contact URL changes, update
+both [portfolio/src/config.js](portfolio/src/config.js) and `connect-src` in
+customHttp.yml (a test checks they match).
+
+## Contact backend (`infra/`)
+
+CDK app (TypeScript, us-west-1). Stacks: `PortfolioContact` (Lambda + Function
+URL, DynamoDB rate-limit counters, SES domain identity + DKIM/DMARC) and
+`PortfolioCi` (GitHub OIDC deploy role, deployed by hand only). Run from `infra/`:
+
+```bash
+npm ci && npm test && npm run typecheck && npx cdk synth --quiet
+```
+
+`.github/workflows/deploy-backend.yml` deploys `PortfolioContact` on pushes to
+`main` that touch `infra/`, after approval in the GitHub `production`
+environment. First-time setup and cutover: [docs/first-deploy.md](docs/first-deploy.md).
+Never run `cdk deploy` without the owner's go-ahead.
 
 ## Working style
 
 - Low-risk personal site, but **live in production**. Run `npm test` and
-  `npm run build` before considering a change done.
+  `npm run build` in `portfolio/` (and the infra checks above if `infra/`
+  changed) before considering a change done.
 - Keep content edits surgical and data-driven. Don't restructure components
   unless asked.
 - When the user reports their role/location has changed, update **all three**

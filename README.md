@@ -121,6 +121,13 @@ The domain is managed in Route 53 and connected through the Amplify console
 (custom domain + managed SSL certificate). Side projects are served from
 subdomains of `ashershores.com`.
 
+## Contact backend
+
+The contact form's Lambda, rate limits and SES sender are a CDK app in
+[`infra/`](infra/) (`npm ci && npm test && npx cdk synth` from there). It
+deploys through GitHub Actions after a manual approval. See
+[docs/first-deploy.md](docs/first-deploy.md).
+
 ## Project status
 
 Privately maintained personal project; not open for external contributions. See

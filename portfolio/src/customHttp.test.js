@@ -42,7 +42,7 @@ describe('customHttp.yml', () => {
       'style-src': ["'self'"],
       'img-src': ["'self'", 'data:'],
       'font-src': ["'self'"],
-      'connect-src': ["'self'", 'https://*.lambda-url.us-west-1.on.aws'],
+      'connect-src': ["'self'", new URL(CONTACT_ENDPOINT).origin],
       'frame-src': ['https://maps.google.com', 'https://www.google.com'],
       'frame-ancestors': ["'none'"],
       'base-uri': ["'self'"],
@@ -55,9 +55,9 @@ describe('customHttp.yml', () => {
     }
   });
 
-  it('allows the default contact endpoint', () => {
-    const host = new URL(CONTACT_ENDPOINT).hostname;
-    expect(host).toMatch(/\.lambda-url\.us-west-1\.on\.aws$/);
+  it('pins connect-src to exactly the contact endpoint (no wildcards)', () => {
+    expect(directives['connect-src']).toEqual(["'self'", new URL(CONTACT_ENDPOINT).origin]);
+    expect(headers['Content-Security-Policy']).not.toMatch(/\*/);
   });
 });
 

@@ -34,7 +34,7 @@ export const IntroSection = () => {
           <div className="w-64 h-64 mx-auto rounded-full overflow-hidden border-2 border-blue-400">
           <img 
             src="/images/profile.jpg" 
-            alt="Asher Shores"
+            alt="Photo of Asher Shores"
             className="w-full h-full object-cover"
             />
           </div>
