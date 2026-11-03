@@ -23,8 +23,8 @@ export const projects = [
   {
     title: "Games Catalog",
     logo: "/images/projects/games.png",
-    description: "My game library in one place, across Steam and consoles, with tags and filters for picking what to play. Visitors see the sign-in page.",
-    liveUrl: "https://games.ashershores.com/",
+    description: "My game library in one place, across Steam and consoles, with tags and filters for picking what to play. The live link opens a read-only demo with a sample library.",
+    liveUrl: "https://games.ashershores.com/?demo",
     github: `${GITHUB}/games-catalog`,
     tech: ["React", "TypeScript", "AppSync", "Steam API"]
   },
