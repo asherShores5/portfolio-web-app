@@ -33,7 +33,7 @@ describe('App', () => {
     expect(screen.getByRole('link', { name: 'GitHub profile' })).toHaveAttribute('href', 'https://github.com/asherShores5');
     expect(screen.getByRole('link', { name: 'LinkedIn profile' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Email Asher' })).toHaveAttribute('href', 'mailto:asher.shores5@gmail.com');
-    expect(screen.getByRole('img', { name: 'Asher Shores' })).toBeInTheDocument();
+    expect(screen.getByRole('img', { name: 'Photo of Asher Shores' })).toBeInTheDocument();
   });
 
   it('menu button exposes its state', async () => {
