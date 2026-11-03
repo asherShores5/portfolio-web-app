@@ -4,7 +4,7 @@ import { socials } from '../data/socials';
 
 export const ConnectSection = () => {
   return (
-    <section id="connect" className="pt-40 min-h-screen">
+    <section id="connect" className="pt-4 min-h-screen scroll-mt-16">
       <div className="max-w-6xl mx-auto p-6">
       <div className="bg-[#1a1f2c]/50 backdrop-blur-sm rounded-xl p-8 shadow-lg shadow-black/5">
         <h2 className="text-3xl font-bold mb-8">Let's Connect</h2>
@@ -19,19 +19,19 @@ export const ConnectSection = () => {
             <div className="flex flex-col space-y-4">
               <a href={socials.github} 
                  className="flex items-center space-x-4 p-4 bg-[#1a1f2c] rounded-lg hover:bg-[#2a2f3c] transition">
-                <Github size={24} />
+                <Github size={24} aria-hidden="true" />
                 <span>Follow my open source work</span>
               </a>
               
               <a href={socials.linkedin}
                  className="flex items-center space-x-4 p-4 bg-[#1a1f2c] rounded-lg hover:bg-[#2a2f3c] transition">
-                <Linkedin size={24} />
+                <Linkedin size={24} aria-hidden="true" />
                 <span>Connect on LinkedIn</span>
               </a>
 
               <a href={`mailto:${socials.email}`}
                  className="flex items-center space-x-4 p-4 bg-[#1a1f2c] rounded-lg hover:bg-[#2a2f3c] transition">
-                <Mail size={24} />
+                <Mail size={24} aria-hidden="true" />
                 <span>Send me an email</span>
               </a>
             </div>

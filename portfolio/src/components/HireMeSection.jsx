@@ -45,7 +45,7 @@ export const HireMeSection = () => {
   };
 
   return (
-    <section id="hire" className="pt-8 min-h-screen text-white">
+    <section id="hire" className="pt-4 min-h-screen text-white scroll-mt-16">
       <div className="max-w-6xl mx-auto p-6">
         <div className="bg-[#1a1f2c]/50 backdrop-blur-sm rounded-xl p-8 shadow-lg shadow-black/5">
           <h2 className="text-3xl font-bold mb-8">Get in Touch</h2>
@@ -121,7 +121,7 @@ export const HireMeSection = () => {
                   isSubmitting ? 'bg-blue-400' : 'bg-blue-600 hover:bg-blue-700'
                 } rounded-lg transition`}
               >
-                <Send size={18} />
+                <Send size={18} aria-hidden="true" />
                 <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
               </button>
             </form>

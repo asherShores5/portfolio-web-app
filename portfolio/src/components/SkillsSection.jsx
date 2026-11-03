@@ -4,7 +4,7 @@ import { skills } from '../data/skills';
 
 export const SkillsSection = () => {
  return (
-   <section id="skills" className="pt-4 min-h-screen">
+   <section id="skills" className="pt-4 min-h-screen scroll-mt-16">
      <div className="max-w-6xl mx-auto p-6">
      <div className="bg-[#1a1f2c]/50 backdrop-blur-sm rounded-xl p-8 shadow-lg shadow-black/5">
 

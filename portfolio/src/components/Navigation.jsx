@@ -17,18 +17,18 @@ export const Navigation = () => {
 
     const links = [
       { href: "#intro", label: "About" },
-      { href: "#projects", label: "Projects" },
       { href: "#skills", label: "Skills" },
       { href: "#certifications", label: "Certifications" },
+      { href: "#projects", label: "Projects" },
       { href: "#connect", label: "Connect" },
       { href: "#hire", label: "Contact" }
     ];
   
     return (
-      <nav className="fixed w-full bg-[#0a0d14]/95 border-b border-gray-800 backdrop-blur-sm z-50">
+      <nav aria-label="Main" className="fixed w-full bg-[#0a0d14]/95 border-b border-gray-800 backdrop-blur-sm z-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex justify-between items-center h-16">
-            <h1 className="text-xl font-bold"><a href="#intro">Asher Shores</a></h1>
+            <h1 className="text-xl font-bold"><a href="#intro" onClick={(e) => scrollToSection(e, "#intro")}>Asher Shores</a></h1>
             
             {/* Desktop Navigation */}
             <div className="hidden md:flex space-x-8">
@@ -42,14 +42,21 @@ export const Navigation = () => {
             </div>
   
             {/* Mobile Menu Button */}
-            <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
-              {isOpen ? <X /> : <Menu />}
+            <button
+              type="button"
+              className="md:hidden"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {isOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
             </button>
           </div>
   
           {/* Mobile Navigation */}
           {isOpen && (
-            <div className="md:hidden flex flex-col space-y-2 pb-4">
+            <div id="mobile-menu" className="md:hidden flex flex-col space-y-2 pb-4">
               {links.map(link => (
                 <a key={link.href}
                 href={link.href}
